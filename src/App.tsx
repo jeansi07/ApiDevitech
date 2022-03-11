@@ -7,10 +7,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <Search/>
+        <Search />
       </header>
 
-      <Characters character={} />
+
     </div>
   );
 }
