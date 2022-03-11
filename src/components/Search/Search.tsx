@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,createContext } from 'react'
+import { useContextData } from '../../Context/dataContext/dataContext'
 import { RickAndMorty } from '../../interfaces/rick-and-morty'
 import Characters from '../Characters'
 
+
 export const Search = () => {
 
-   const [character, setCharacters] = useState([] as RickAndMorty[])
+   /* const [character, setCharacters] = useState([] as RickAndMorty[]) */
     const [data, setData] = useState({} as RickAndMorty)
+    const {setCharacters} = useContextData()
+    
 
     // useEffect(() => {
     //     getData(5)
     // }, [])
+    
 
 
     const getData = async (serie: number) => {
@@ -20,9 +25,10 @@ export const Search = () => {
             }
         })
         const response = await res.json()
-        console.log(response);
-        setCharacters(response.results)
-
+        if (response) {
+            setCharacters(response.results)
+            
+        }
 
         // const findCharacter = (personajes: any) => {
         //     let { persojane } = api.find(j => j.personaje == personajes)
@@ -40,10 +46,11 @@ export const Search = () => {
 
             <div> {data.id} </div>
 
-            <button onClick={() => getData(1)} >Search</button>
+            <button onClick={() => getData(5)} >Search</button>
             
 
-            <Characters character={character}/>
+
+            
         </div>
     )
 }
