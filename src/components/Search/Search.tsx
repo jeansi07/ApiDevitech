@@ -1,6 +1,7 @@
 import React, { useEffect, useState,createContext } from 'react'
 import { useContextData } from '../../Context/dataContext/dataContext'
 import { RickAndMorty } from '../../interfaces/rick-and-morty'
+import Buttons from '../Buttons'
 import Characters from '../Characters'
 
 
@@ -41,16 +42,15 @@ export const Search = () => {
     }
 
     return (
-        <div>
-            <input type="text" />
-
-            <div> {data.id} </div>
-
-            <button onClick={() => getData(5)} >Search</button>
-            
-
-
-            
+        <div className="container">
+            <div className="justify-content-center m-4">
+            <button 
+            className="btn btn-outline-primary" 
+            type="button" 
+            onClick={() => getData(1)} 
+            >Search
+            </button>   
+            </div>
         </div>
     )
 }
