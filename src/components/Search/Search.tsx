@@ -8,19 +8,19 @@ import Characters from '../Characters'
 export const Search = () => {
 
    /* const [character, setCharacters] = useState([] as RickAndMorty[]) */
-    const [data, setData] = useState({} as RickAndMorty)
-    const {setCharacters} = useContextData()
+  //  const [data, setData] = useState({} as RickAndMorty)
+    const {setCharacters, count} = useContextData()
     
 
-    // useEffect(() => {
-    //     getData(5)
-    // }, [])
+    useEffect(() => {
+        getData()
+    }, [count])
     
 
 
-    const getData = async (serie: number) => {
+    const getData = async () => {
         /* https://rickandmortyapi.com/api/character?page=${index} */
-        const res = await fetch(`https://rickandmortyapi.com/api/character?page=${serie}`, {
+        const res = await fetch(`https://rickandmortyapi.com/api/character?page=${count}`, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json'
             }
@@ -47,7 +47,7 @@ export const Search = () => {
             <button 
             className="btn btn-outline-primary" 
             type="button" 
-            onClick={() => getData(1)} 
+            onClick={getData} 
             >Search
             </button>   
             </div>

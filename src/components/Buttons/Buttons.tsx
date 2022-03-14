@@ -1,26 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useContextData } from "../../Context/dataContext/dataContext";
+
 
 const Buttons = () => {
-    const handlePrevious = () => {
+    const { setCount } = useContextData();
+    
 
-    }
-            
-    const handleNext = () => {
+    
 
-    }
+
     return (
-        <nav>
-            <ul className="pagination justify-content-center">
-                <li className="page-item">
-                    <button className="page-link mr-3" onClick={handlePrevious}>Previous</button>
-                </li>
+        <div>
+            <button className="btn btn-outline-primary" onClick={() => setCount(prevCount => prevCount - 1)}>Back</button>
+            
+            <button className="btn btn-outline-primary" onClick={() => setCount(prevCount => prevCount + 1)}>Next</button>
+        </div>
 
-                <li className="page-item">
-                    <button className="page-link" onClick={handleNext}>Next</button>
-                </li>
-            </ul>
-        </nav>
     )
-}
+};
 
-export default Buttons
+export default Buttons;

@@ -1,19 +1,23 @@
-import { useContext,createContext } from "react";
+import { useContext, createContext, Dispatch, SetStateAction } from "react";
 import { RickAndMorty } from "../../interfaces/rick-and-morty";
 
 export type RickTypeContext = {
-    characters:RickAndMorty[]
-    setCharacters:(o:RickAndMorty[])=>void
-}
+  count: number;
+  characters: RickAndMorty[];
+  setCharacters: (o: RickAndMorty[]) => void;
+  setCount: Dispatch<SetStateAction<number>>;
+};
 
-export const ContextData = createContext <RickTypeContext> ({
-    characters:[],
-    setCharacters:()=>{},
-})
+export const ContextData = createContext<RickTypeContext>({
+  characters: [],
+  setCharacters: () => {},
+  count: 1,
+  setCount: () => {},
+});
 
-export const useContextData=()=>useContext(ContextData)
+export const useContextData = () => useContext(ContextData);
 
-export default{
-    ContextData,
-    useContextData
-}
+export default {
+  ContextData,
+  useContextData,
+};

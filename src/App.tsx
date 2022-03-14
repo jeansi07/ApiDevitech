@@ -8,10 +8,11 @@ import { RickAndMorty } from './interfaces/rick-and-morty';
 function App() {
 
   const [characters, setCharacters] = useState([] as RickAndMorty[])
+  const [count, setCount] = useState(1)
 
   return (
     <div className="container">
-      <ContextData.Provider value={{characters,setCharacters}}>
+      <ContextData.Provider value={{characters,setCharacters, count, setCount}}>
         <header>
           <Search />
         </header>
