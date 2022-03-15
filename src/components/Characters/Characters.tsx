@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContextData } from '../../Context/dataContext/dataContext'
 import { RickAndMorty } from '../../interfaces/rick-and-morty'
 import Buttons from '../Buttons'
@@ -9,25 +9,34 @@ interface PropsCharacters {
 
 export const Characters = () => {
 
-    const {characters} = useContextData()
+    const { characters, search } = useContextData()
+    const [arryAxu, setArryAux] = useState(characters)
+
+    useEffect(() => {
+        if (search.trim().length > 2) {
+            setArryAux(characters.filter(prso => prso.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())))
+        } else {
+            setArryAux(characters)
+        }
+    }, [search])
 
     return (
-        
+
         <div className="row">
-            <Buttons/>
-            {characters.map((i, index) => (
+            <Buttons />
+            {arryAxu.map((i, index) => (
                 <div key={index} className="col">
-                    <div className="card" style={{ minWidth: "200px" }} >
+                    <div className="card" style={{ minWidth: "180px" }} >
                         <img src={i.image} alt="" />
                         <h3 className="card-title">{i.name}</h3>
                         <p>{i.gender}</p>
                         <p>{i.status}</p>
                         <p>{i.species}</p>
-                        
+
                     </div>
                 </div>
             ))}
-           
+            <Buttons />
         </div>
     )
 }

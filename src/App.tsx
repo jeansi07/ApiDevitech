@@ -9,10 +9,11 @@ function App() {
 
   const [characters, setCharacters] = useState([] as RickAndMorty[])
   const [count, setCount] = useState(1)
+  const [search, setSearch] = useState('')
 
   return (
     <div className="container">
-      <ContextData.Provider value={{characters,setCharacters, count, setCount}}>
+      <ContextData.Provider value={{characters,setCharacters, count, setCount, search, setSearch}}>
         <header>
           <Search />
         </header>

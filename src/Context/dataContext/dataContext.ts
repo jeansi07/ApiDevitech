@@ -3,9 +3,11 @@ import { RickAndMorty } from "../../interfaces/rick-and-morty";
 
 export type RickTypeContext = {
   count: number;
+  setCount: Dispatch<SetStateAction<number>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
   characters: RickAndMorty[];
   setCharacters: (o: RickAndMorty[]) => void;
-  setCount: Dispatch<SetStateAction<number>>;
 };
 
 export const ContextData = createContext<RickTypeContext>({
@@ -13,6 +15,8 @@ export const ContextData = createContext<RickTypeContext>({
   setCharacters: () => {},
   count: 1,
   setCount: () => {},
+  search: "",
+  setSearch: () => {},
 });
 
 export const useContextData = () => useContext(ContextData);
