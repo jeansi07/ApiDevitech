@@ -17,8 +17,9 @@ export const Characters = () => {
             setArryAux(characters.filter(prso => prso.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())))
         } else {
             setArryAux(characters)
+            
         }
-    }, [search])
+    }, [search, characters])
 
     return (
 
@@ -32,7 +33,6 @@ export const Characters = () => {
                         <p>{i.gender}</p>
                         <p>{i.status}</p>
                         <p>{i.species}</p>
-
                     </div>
                 </div>
             ))}
